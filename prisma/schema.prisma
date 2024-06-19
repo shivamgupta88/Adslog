@@ -1,0 +1,57 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "postgresql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Otp {
+  phone_no String @id @unique
+  otp      String
+  user     User   @relation(fields: [phone_no], references: [phone_no])
+}
+
+model User {
+  user_id                  String  @id @default(uuid())
+  account_type             String
+  first_name               String
+  last_name                String
+  country_of_residence     String
+  city                     String
+  address                  String
+  email                    String  @unique
+  messenger                String?
+  website                  String?
+  daily_traffic_amount     Int?
+  // password                 String
+  verified_status          Boolean @default(false)
+  phone_no                 String  @unique
+  phone_no_verified_status Boolean @default(false)
+  Otp                      Otp?
+}
+
+model Website {
+  website_id String @id @unique 
+  name       String
+  domain     String
+  share_id   String
+  // reset_at   String
+  user_id    String
+  createdAt   DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime? @updatedAt @map("updated_at") @db.Timestamptz(6)
+  deletedAt   DateTime? @map("deleted_at") @db.Timestamptz(6)
+  // created_by String
+  // team_id    String
+}
+
+model Password {
+  id             String   @id @default(uuid())
+  user_id        String   @unique
+  salt_string    String
+  hashed_password String
+  createdAt      DateTime @default(now())
+}

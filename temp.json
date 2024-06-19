@@ -1,0 +1,17 @@
+const dataToSend =  {
+    "user_id": "cb6a55f5-f335-4d47-b832-4b2953afb566",
+    "account_type": "public",
+    "first_name": "shivam",
+    "last_name": "gupta",
+    "country_of_residence": "India",
+    "city": "India",
+    "address": "Delhi",
+    "email": "mfdffdf@jfdo.com",
+    "messenger": "facebo",
+    "website": "wejeo.com",
+    "daily_traffic_amount": 323,
+    "password": "$2a$10$hz36FxoAmzQ9mCG11QAclOq73cl6iqgtHXC5uY.9qD1XEfiuIXug6",
+    "verified_status": true,
+    "phone_no": "2323220",
+    "phone_no_verified_status": true
+}
